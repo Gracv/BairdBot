@@ -26,6 +26,7 @@ public class MessageListener extends ListenerAdapter {
         embedSuggestion.setAuthor(author.getName(), null, author.getAvatarUrl());
         embedSuggestion.setThumbnail("https://seeklogo.com/images/M/minecraft-logo-5EAD3A1535-seeklogo.com.png");
 
+        //TODO: Add bot settings configuration to file.
         if (!event.getAuthor().isBot() && suggestions != null) {
             if (channel.equals(suggestions)) {
                 message.delete().queue();
