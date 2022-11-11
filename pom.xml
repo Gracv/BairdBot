@@ -55,7 +55,7 @@
                 <configuration>
                     <transformers>
                         <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                            <mainClass>me.gracu.DiscordBot</mainClass> <!-- You have to replace this with a path to your main class like my.path.Main -->
+                            <mainClass>me.gracu.DiscordBot</mainClass>
                         </transformer>
                     </transformers>
                     <createDependencyReducedPom>false</createDependencyReducedPom>
