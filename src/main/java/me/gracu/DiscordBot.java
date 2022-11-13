@@ -19,11 +19,9 @@ public class DiscordBot extends ListenerAdapter {
         manager.fileManager();
         ConfigHandler handler = ConfigHandler.getInstance();
         Config config = handler.getConfig();
-//        System.out.println("Token: " + config.getToken());
-//        handler.dumpConfig();
 
         JDA bot = JDABuilder.createDefault(config.getToken())
-                .setActivity(Activity.playing("with your mom"))
+                .setActivity(Activity.playing(":)"))
                 .addEventListeners(new MessageListener())
                 .enableIntents(GatewayIntent.MESSAGE_CONTENT)
                 .build();

@@ -1,5 +1,8 @@
 package me.gracu.listeners;
 
+import me.gracu.io.Config;
+import me.gracu.io.ConfigHandler;
+import me.gracu.io.ConfigManager;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.entities.Message;
 import net.dv8tion.jda.api.entities.User;
@@ -10,14 +13,23 @@ import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 
 import java.awt.*;
+import java.io.FileNotFoundException;
 
-public class MessageListener extends ListenerAdapter {
+public class MessageListener extends ListenerAdapter  {
     @Override
     public void onMessageReceived(MessageReceivedEvent event) {
+        ConfigHandler handler = null;
+        try {
+            handler = ConfigHandler.getInstance();
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+        Config config = handler.getConfig();
+
         User author = event.getAuthor();
         Message message = event.getMessage();
         MessageChannel channel = event.getChannel();
-        TextChannel suggestions = event.getGuild().getTextChannelById("1033769806551334952");
+        TextChannel suggestions = event.getGuild().getTextChannelById(config.getSuggestions_channel_id());
 
         EmbedBuilder embedSuggestion = new EmbedBuilder();
         embedSuggestion.addField("Propozycję wysłał:", author.getAsMention(), false);
